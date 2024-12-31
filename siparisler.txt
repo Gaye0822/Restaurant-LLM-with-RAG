@@ -1,0 +1,9 @@
+=== Sipariş Detayları ===
+Tarih: 2024-12-31 15:56:35
+
+Sipariş Özeti:
+==============================
+• izgara Tavuk x2 = 260.00 TL
+==============================
+Toplam Tutar: 260.00 TL
+=== Sipariş Sonu ===
