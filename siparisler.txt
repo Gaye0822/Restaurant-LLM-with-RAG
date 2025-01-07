@@ -1,9 +1,10 @@
 === Sipariş Detayları ===
-Tarih: 2024-12-31 15:56:35
+Tarih: 2025-01-07 03:24:59
 
 Sipariş Özeti:
 ==============================
-• izgara Tavuk x2 = 260.00 TL
+• Tiramisu x2 = 170.00 TL
+• Sufle x1 = 65.00 TL
 ==============================
-Toplam Tutar: 260.00 TL
+Toplam Tutar: 235.00 TL
 === Sipariş Sonu ===
