@@ -16,6 +16,9 @@ function connectWebSocket() {
         ws.onmessage = (event) => {
             const response = JSON.parse(event.data);
             displayMessage('Garson', response.text);
+            if (response.order) {
+                addOrder(response.order); // Gelen siparişleri listeye ekle
+            }
 
             if (response.audio) {
                 playAudio(response.audio);
@@ -38,6 +41,43 @@ function connectWebSocket() {
         setTimeout(connectWebSocket, 3000);
     }
 }
+
+let current_order = []; // Mevcut siparişler listesi
+
+// Sipariş Ekleme ve Listeyi Güncelleme
+function addOrder(order) {
+    console.log('Sipariş ekleniyor:', order);
+    current_order.push(order);
+    console.log('Güncel sipariş listesi:', current_order);
+    updateOrderList();
+}
+
+function updateOrderList() {
+    const orderList = document.getElementById('orderList');
+    orderList.innerHTML = ''; // Listeyi temizle
+    current_order.forEach((order, index) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${index + 1}. ${order}`;
+        orderList.appendChild(listItem);
+    });
+}
+
+// Siparişleri Kaydetme
+function saveOrders() {
+    if (current_order.length === 0) {
+        displayMessage('Sistem', 'Kayıt edilecek sipariş yok!');
+        return;
+    }
+
+    console.log('Siparişler kaydediliyor:', current_order); // Debug log
+    displayMessage('Sistem', 'Siparişler başarıyla kaydedildi!');
+
+    // Burada siparişleri sunucuya göndermek için bir işlem ekleyebilirsiniz.
+    current_order = []; // Sipariş listesini sıfırla
+    updateOrderList();
+}
+
+
 
 // Mesajı Sohbet Kutusuna Ekle
 function displayMessage(sender, text) {
@@ -169,6 +209,10 @@ function setupEventListeners() {
     const textInput = document.getElementById('textInput');
     const startButton = document.getElementById('startButton');
     const stopButton = document.getElementById('stopButton');
+    const saveOrdersButton = document.getElementById('saveOrdersButton');
+    if (saveOrdersButton) {
+        saveOrdersButton.onclick = saveOrders;
+    }
 
     if (sendButton) {
         sendButton.onclick = sendMessage;  // addEventListener yerine doğrudan atama

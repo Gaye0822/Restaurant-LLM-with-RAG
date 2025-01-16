@@ -84,3 +84,22 @@
     margin-right: 20%; /* Solda hizalama için */
     align-self: flex-start; /* Sola hizalama */
 }
+.order-list {
+    margin: 1rem 0;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.order-total {
+    margin-top: 1rem;
+    font-weight: bold;
+    text-align: right;
+}

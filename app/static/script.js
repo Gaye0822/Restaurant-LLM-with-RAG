@@ -16,6 +16,9 @@ function connectWebSocket() {
         ws.onmessage = (event) => {
             const response = JSON.parse(event.data);
             displayMessage('Garson', response.text);
+            if (response.order) {
+                updateOrder(response.order); // Gelen siparişleri listeye ekle
+            }
 
             if (response.audio) {
                 playAudio(response.audio);
@@ -38,6 +41,53 @@ function connectWebSocket() {
         setTimeout(connectWebSocket, 3000);
     }
 }
+
+let current_order = {
+    items: [],
+    total: 0
+};
+
+function updateOrder(orderData) {
+    const orderList = document.getElementById('orderList');
+    orderList.innerHTML = ''; // Listeyi temizle
+    
+    if (!orderData.items || orderData.items.length === 0) {
+        orderList.innerHTML = '<li>Henüz sipariş yok</li>';
+        return;
+    }
+
+    // Siparişleri listele
+    orderData.items.forEach(item => {
+        const li = document.createElement('li');
+        li.className = 'order-item';
+        li.innerHTML = `
+            ${item.urun} x ${item.quantity} = ${(item.total).toFixed(2)} TL
+        `;
+        orderList.appendChild(li);
+    });
+
+    // Toplam tutarı göster
+    const totalDiv = document.createElement('div');
+    totalDiv.className = 'order-total';
+    totalDiv.textContent = `Toplam: ${orderData.total.toFixed(2)} TL`;
+    orderList.appendChild(totalDiv);
+}
+function saveOrders() {
+    if (!current_order.items || current_order.items.length === 0) {
+        displayMessage('Sistem', 'Kayıt edilecek sipariş yok!');
+        return;
+    }
+
+    // Siparişi onaylama için backend'e gönder
+    if (ws && ws.readyState === WebSocket.OPEN) {
+        ws.send(JSON.stringify({
+            type: "order_confirm",
+            confirm: true
+        }));
+    }
+}
+
+
 
 // Mesajı Sohbet Kutusuna Ekle
 function displayMessage(sender, text) {
@@ -169,6 +219,10 @@ function setupEventListeners() {
     const textInput = document.getElementById('textInput');
     const startButton = document.getElementById('startButton');
     const stopButton = document.getElementById('stopButton');
+    const saveOrdersButton = document.getElementById('saveOrdersButton');
+    if (saveOrdersButton) {
+        saveOrdersButton.onclick = saveOrders;
+    }
 
     if (sendButton) {
         sendButton.onclick = sendMessage;  // addEventListener yerine doğrudan atama
