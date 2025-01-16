@@ -1,0 +1,105 @@
+/* Ana Konteyner */
+.container {
+    max-width: 800px; /* Maksimum genişlik */
+    margin: 0 auto; /* Ortalamak için */
+    padding: 20px;
+    background-color: #ffffff; /* Konteyner arkaplanı (isteğe bağlı) */
+    border-radius: 8px; /* Köşeleri yumuşatma */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
+}
+
+/* Sohbet Konteyneri */
+.chat-container {
+    height: 500px; /* Sabit yükseklik */
+    border: 1px solid #ccc; /* Çerçeve rengi */
+    padding: 20px;
+    margin-bottom: 20px;
+    overflow-y: auto; /* Dikey kaydırma */
+    background-color: #fafafa; /* Hafif arkaplan rengi */
+    border-radius: 8px; /* Köşeleri yumuşatma */
+}
+
+/* Kontrol Grupları */
+.controls {
+    display: flex;
+    flex-direction: column; /* Dikey hizalama */
+    gap: 10px; /* Gruplar arası boşluk */
+}
+
+/* Ses ve Metin Kontrolleri */
+.voice-controls,
+.text-controls {
+    display: flex; /* Yan yana yerleşim */
+    gap: 10px; /* Elemanlar arası boşluk */
+}
+
+/* Düğme Stilleri */
+.control-button {
+    padding: 10px 20px;
+    background-color: #007bff; /* Ana renk */
+    color: white; /* Yazı rengi */
+    border: none; /* Çerçeve yok */
+    border-radius: 5px; /* Köşeleri yumuşatma */
+    cursor: pointer; /* El işareti efekti */
+    transition: background-color 0.3s ease; /* Hover animasyonu */
+}
+
+.control-button:hover:not(:disabled) {
+    background-color: #0056b3; /* Hover rengi */
+}
+
+.control-button:disabled {
+    background-color: #ccc; /* Pasif düğme rengi */
+    cursor: not-allowed; /* Kullanılabilir olmadığını gösteren imleç */
+}
+
+/* Metin Giriş Alanı */
+#textInput {
+    flex: 1; /* Alanın kalanını kaplar */
+    padding: 10px;
+    border: 1px solid #ccc; /* Çerçeve rengi */
+    border-radius: 5px; /* Köşeleri yumuşatma */
+    font-size: 1em; /* Yazı boyutu */
+}
+
+/* Mesaj Stilleri */
+.message {
+    margin-bottom: 10px; /* Mesajlar arası boşluk */
+    padding: 10px; /* İç boşluk */
+    border-radius: 5px; /* Köşeleri yumuşatma */
+    word-wrap: break-word; /* Uzun kelimeleri kır */
+    font-size: 0.9em; /* Mesaj yazı boyutu */
+}
+
+/* Kullanıcı Mesajı */
+.user-message {
+    background-color: #e3f2fd; /* Açık mavi ton */
+    margin-left: 20%; /* Sağda hizalama için */
+    align-self: flex-end; /* Sağa hizalama */
+}
+
+/* Bot Mesajı */
+.bot-message {
+    background-color: #f5f5f5; /* Açık gri ton */
+    margin-right: 20%; /* Solda hizalama için */
+    align-self: flex-start; /* Sola hizalama */
+}
+.order-list {
+    margin: 1rem 0;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.order-total {
+    margin-top: 1rem;
+    font-weight: bold;
+    text-align: right;
+}

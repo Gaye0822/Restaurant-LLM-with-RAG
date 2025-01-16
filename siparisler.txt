@@ -1,0 +1,11 @@
+=== Sipariş Detayları ===
+Tarih: 2025-01-12 04:15:45
+
+Sipariş Özeti:
+==============================
+• Sufle x2 = 130.00 TL
+• Balkabagi corbasi x2 = 110.00 TL
+• Tiramisu x1 = 85.00 TL
+==============================
+Toplam Tutar: 325.00 TL
+=== Sipariş Sonu ===
