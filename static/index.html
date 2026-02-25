@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Restaurant LLM Assistant</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="brand">
+        <div class="logo">🍕</div>
+        <div>
+          <h1>Mutlu Garson</h1>
+          <p>RAG + Agent ile menü sor / sipariş ver</p>
+        </div>
+      </div>
+
+      <div class="status">
+        <span id="statusDot" class="dot"></span>
+        <span id="statusText">Bağlı</span>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="chat">
+        <div id="chatList" class="chat-list"></div>
+
+        <div class="composer">
+          <input id="msgInput" type="text" placeholder="Örn: Menüyü göster / 2 adet Margarita istiyorum" />
+          <button id="sendBtn">Gönder</button>
+        </div>
+
+        <div class="composer-hint">
+          <button class="chip" data-text="Menüde ne var?">Menüde ne var?</button>
+          <button class="chip" data-text="Vegan seçenek var mı?">Vegan seçenek?</button>
+          <button class="chip" data-text="2 adet Margarita sipariş etmek istiyorum">2 Margarita</button>
+          <button class="chip" data-text="Siparişim özeti">Sipariş özeti</button>
+        </div>
+      </section>
+
+      <aside class="side">
+        <div class="card">
+          <h2>Sipariş</h2>
+          <div id="orderBox" class="order-box">
+            <p class="muted">Henüz sipariş yok.</p>
+          </div>
+
+          <div class="order-footer">
+            <div class="total">
+              <span>Toplam</span>
+              <strong id="orderTotal">0.00 TL</strong>
+            </div>
+            <button id="clearBtn" class="ghost">Temizle</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Ses</h2>
+          <p class="muted">Asistan yanıtı geldikçe otomatik çalar.</p>
+          <audio id="audioPlayer" controls></audio>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+python-multipart
+pandas
+python-dotenv
+gtts
+
+langchain
+langchain-openai
+langchain-community
+faiss-cpu
+
+openai
