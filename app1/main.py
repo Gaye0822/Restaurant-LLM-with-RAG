@@ -10,6 +10,9 @@ from fastapi.staticfiles import StaticFiles
 from openai import OpenAI
 
 from .rag import RestaurantRAG
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 APP_DIR = os.path.dirname(os.path.abspath(__file__))
